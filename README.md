@@ -55,7 +55,7 @@ You can also view the QEP graph tree to compare the the Natural Language descrip
 ## Authors
 
 * **Wayne Lim** - Algorithm
-* **Tan Jia Jun** - GUI
+* **Tan Jia Jun** - GUI and Architecture(Facade)
 * **Yue Ying** - Parsing and Translation
 * **Sean Yap** - Foundation and Design
 
