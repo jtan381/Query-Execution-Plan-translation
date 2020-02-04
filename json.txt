@@ -1,0 +1,179 @@
+[
+    [
+        [
+            {
+                "Plan": {
+                    "Node Type": "Limit",
+                    "Parallel Aware": false,
+                    "Startup Cost": 577938.2,
+                    "Total Cost": 577938.21,
+                    "Plan Rows": 1,
+                    "Plan Width": 32,
+                    "Plans": [
+                        {
+                            "Node Type": "Aggregate",
+                            "Strategy": "Plain",
+                            "Partial Mode": "Simple",
+                            "Parent Relationship": "Outer",
+                            "Parallel Aware": false,
+                            "Startup Cost": 577938.2,
+                            "Total Cost": 577938.21,
+                            "Plan Rows": 1,
+                            "Plan Width": 32,
+                            "Plans": [
+                                {
+                                    "Node Type": "Nested Loop",
+                                    "Parent Relationship": "Outer",
+                                    "Parallel Aware": false,
+                                    "Join Type": "Inner",
+                                    "Startup Cost": 496567.65,
+                                    "Total Cost": 577938.17,
+                                    "Plan Rows": 10,
+                                    "Plan Width": 8,
+                                    "Inner Unique": false,
+                                    "Join Filter": "(part.p_partkey = lineitem.l_partkey)",
+                                    "Plans": [
+                                        {
+                                            "Node Type": "Nested Loop",
+                                            "Parent Relationship": "Outer",
+                                            "Parallel Aware": false,
+                                            "Join Type": "Inner",
+                                            "Startup Cost": 496567.22,
+                                            "Total Cost": 577934.18,
+                                            "Plan Rows": 1,
+                                            "Plan Width": 44,
+                                            "Inner Unique": true,
+                                            "Join Filter": "(part.p_partkey = lineitem_1.l_partkey)",
+                                            "Plans": [
+                                                {
+                                                    "Node Type": "Aggregate",
+                                                    "Strategy": "Sorted",
+                                                    "Partial Mode": "Finalize",
+                                                    "Parent Relationship": "Outer",
+                                                    "Parallel Aware": false,
+                                                    "Startup Cost": 495567.22,
+                                                    "Total Cost": 566731.7,
+                                                    "Plan Rows": 191735,
+                                                    "Plan Width": 38,
+                                                    "Group Key": [
+                                                        "lineitem_1.l_partkey"
+                                                    ],
+                                                    "Plans": [
+                                                        {
+                                                            "Node Type": "Gather Merge",
+                                                            "Parent Relationship": "Outer",
+                                                            "Parallel Aware": false,
+                                                            "Startup Cost": 495567.22,
+                                                            "Total Cost": 560979.65,
+                                                            "Plan Rows": 383470,
+                                                            "Plan Width": 38,
+                                                            "Workers Planned": 2,
+                                                            "Plans": [
+                                                                {
+                                                                    "Node Type": "Aggregate",
+                                                                    "Strategy": "Sorted",
+                                                                    "Partial Mode": "Partial",
+                                                                    "Parent Relationship": "Outer",
+                                                                    "Parallel Aware": false,
+                                                                    "Startup Cost": 494567.19,
+                                                                    "Total Cost": 515717.68,
+                                                                    "Plan Rows": 191735,
+                                                                    "Plan Width": 38,
+                                                                    "Group Key": [
+                                                                        "lineitem_1.l_partkey"
+                                                                    ],
+                                                                    "Plans": [
+                                                                        {
+                                                                            "Node Type": "Sort",
+                                                                            "Parent Relationship": "Outer",
+                                                                            "Parallel Aware": false,
+                                                                            "Startup Cost": 494567.19,
+                                                                            "Total Cost": 500818.46,
+                                                                            "Plan Rows": 2500506,
+                                                                            "Plan Width": 11,
+                                                                            "Sort Key": [
+                                                                                "lineitem_1.l_partkey"
+                                                                            ],
+                                                                            "Plans": [
+                                                                                {
+                                                                                    "Node Type": "Seq Scan",
+                                                                                    "Parent Relationship": "Outer",
+                                                                                    "Parallel Aware": true,
+                                                                                    "Relation Name": "lineitem",
+                                                                                    "Alias": "lineitem_1",
+                                                                                    "Startup Cost": 0.0,
+                                                                                    "Total Cost": 143371.06,
+                                                                                    "Plan Rows": 2500506,
+                                                                                    "Plan Width": 11
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Node Type": "Materialize",
+                                                    "Parent Relationship": "Inner",
+                                                    "Parallel Aware": false,
+                                                    "Startup Cost": 1000.0,
+                                                    "Total Cost": 6409.11,
+                                                    "Plan Rows": 1,
+                                                    "Plan Width": 6,
+                                                    "Plans": [
+                                                        {
+                                                            "Node Type": "Gather",
+                                                            "Parent Relationship": "Outer",
+                                                            "Parallel Aware": false,
+                                                            "Startup Cost": 1000.0,
+                                                            "Total Cost": 6409.1,
+                                                            "Plan Rows": 1,
+                                                            "Plan Width": 6,
+                                                            "Workers Planned": 2,
+                                                            "Single Copy": false,
+                                                            "Plans": [
+                                                                {
+                                                                    "Node Type": "Seq Scan",
+                                                                    "Parent Relationship": "Outer",
+                                                                    "Parallel Aware": true,
+                                                                    "Relation Name": "part",
+                                                                    "Alias": "part",
+                                                                    "Startup Cost": 0.0,
+                                                                    "Total Cost": 5409.0,
+                                                                    "Plan Rows": 1,
+                                                                    "Plan Width": 6,
+                                                                    "Filter": "((p_brand = 'brand#33'::bpchar) AND (p_container = 'wrap jar'::bpchar))"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "Node Type": "Index Scan",
+                                            "Parent Relationship": "Inner",
+                                            "Parallel Aware": false,
+                                            "Scan Direction": "Forward",
+                                            "Index Name": "index_3",
+                                            "Relation Name": "lineitem",
+                                            "Alias": "lineitem",
+                                            "Startup Cost": 0.43,
+                                            "Total Cost": 3.87,
+                                            "Plan Rows": 10,
+                                            "Plan Width": 19,
+                                            "Index Cond": "(l_partkey = lineitem_1.l_partkey)",
+                                            "Filter": "(l_quantity < ((0.2 * avg(lineitem_1.l_quantity))))"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    ]
+]
